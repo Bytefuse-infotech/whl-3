@@ -1,0 +1,1144 @@
+/* ============================================================
+   WHITE LOTUS HOSPITAL — PREMIUM CUSTOM DESIGN LAYER
+   Overrides every generic template element.
+   ============================================================ */
+
+/* ── 1. DESIGN TOKENS ──────────────────────────────────── */
+:root {
+  /* brand */
+  --wl-navy:        #0b1120;
+  --wl-navy-light:  #121d33;
+  --wl-navy-mid:    #1a2744;
+  --wl-teal:        #00b4d8;
+  --wl-teal-dark:   #0096b4;
+  --wl-gold:        #c9a84c;
+  --wl-gold-soft:   #dfc276;
+  --wl-white:       #f8f9fc;
+  --wl-text:        #8892a8;
+  --wl-text-dark:   #4a5568;
+  --wl-border:      rgba(255,255,255,0.06);
+
+  /* surfaces */
+  --wl-card-bg:     #ffffff;
+  --wl-section-alt: #f4f6fb;
+
+  /* effects */
+  --wl-shadow-sm:   0 2px 12px rgba(11,17,32,0.06);
+  --wl-shadow-md:   0 8px 30px rgba(11,17,32,0.08);
+  --wl-shadow-lg:   0 20px 60px rgba(11,17,32,0.12);
+  --wl-shadow-glow: 0 0 40px rgba(0,180,216,0.15);
+  --wl-radius:      14px;
+  --wl-radius-sm:   8px;
+  --wl-ease:        cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Override template variables */
+  --accent-color: #00b4d8;
+  --heading-color: #1a1a2e;
+  --default-color: #4a5568;
+  --nav-hover-color: #00b4d8;
+  --nav-dropdown-hover-color: #00b4d8;
+}
+
+/* ── 2. GLOBAL RESETS ──────────────────────────────────── */
+body {
+  font-family: 'Inter', 'Poppins', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--wl-text-dark);
+  background: #fff;
+  -webkit-font-smoothing: antialiased;
+  line-height: 1.75;
+  font-size: 15px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', 'Raleway', sans-serif;
+  color: var(--wl-navy);
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+::selection { background: var(--wl-teal); color: #fff; }
+
+section, .section { padding: 100px 0; overflow: clip; }
+
+/* ── 3. HEADER — TRANSPARENT TO SOLID ─────────────────── */
+.header {
+  background: rgba(255,255,255,0.95) !important;
+  backdrop-filter: saturate(180%) blur(20px);
+  -webkit-backdrop-filter: saturate(180%) blur(20px);
+  box-shadow: 0 1px 0 rgba(0,0,0,0.04);
+  transition: all 0.4s var(--wl-ease);
+}
+
+.header .topbar {
+  background: var(--wl-navy) !important;
+  height: 38px;
+  font-size: 12.5px;
+  letter-spacing: 0.4px;
+  font-weight: 500;
+}
+
+.header .branding { min-height: 68px; }
+
+.header .logo img {
+  max-height: 44px;
+  transition: transform 0.3s var(--wl-ease);
+}
+
+.header .logo h1 {
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+}
+
+/* NAV LINKS */
+@media (min-width: 1200px) {
+  .navmenu a, .navmenu a:focus {
+    font-size: 12.5px !important;
+    font-weight: 600 !important;
+    letter-spacing: 1.2px !important;
+    text-transform: uppercase !important;
+    color: var(--wl-navy) !important;
+    padding: 20px 14px !important;
+    position: relative;
+  }
+
+  .navmenu a::after {
+    content: '';
+    position: absolute;
+    bottom: 14px;
+    left: 14px;
+    right: 14px;
+    height: 2px;
+    background: var(--wl-teal);
+    border-radius: 2px;
+    transform: scaleX(0);
+    transform-origin: center;
+    transition: transform 0.35s var(--wl-ease);
+  }
+
+  .navmenu a:hover::after,
+  .navmenu .active::after { transform: scaleX(1); }
+
+  .navmenu li:hover > a,
+  .navmenu .active { color: var(--wl-teal) !important; }
+
+  .navmenu .dropdown ul {
+    border-radius: var(--wl-radius-sm) !important;
+    box-shadow: var(--wl-shadow-lg) !important;
+    border: 1px solid rgba(0,0,0,0.04) !important;
+    padding: 8px 0 !important;
+  }
+
+  .navmenu .dropdown ul a {
+    font-size: 13.5px !important;
+    text-transform: none !important;
+    letter-spacing: 0 !important;
+    padding: 10px 22px !important;
+    font-weight: 500 !important;
+  }
+
+  .navmenu .dropdown ul a::after { display: none !important; }
+
+  .navmenu .dropdown ul a:hover {
+    background: rgba(0,180,216,0.06) !important;
+  }
+}
+
+/* CTA Button */
+.header .cta-btn {
+  background: var(--wl-navy) !important;
+  color: #fff !important;
+  border-radius: 50px !important;
+  padding: 10px 26px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  border: 2px solid var(--wl-navy) !important;
+  transition: all 0.35s var(--wl-ease) !important;
+  box-shadow: none !important;
+}
+
+.header .cta-btn:hover {
+  background: transparent !important;
+  color: var(--wl-navy) !important;
+  transform: none !important;
+}
+
+/* ── 4. HERO — CINEMATIC FULL-BLEED ──────────────────── */
+.hero { padding: 0 !important; }
+
+.hero .carousel {
+  min-height: 92vh !important;
+}
+
+.hero img {
+  filter: brightness(0.3) !important;
+  transition: transform 8s linear, filter 1s ease;
+}
+
+.hero .carousel-item.active img {
+  transform: scale(1.05);
+}
+
+.hero .container {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  border-radius: 0 !important;
+  border-top: none !important;
+  max-width: 780px !important;
+  padding: 0 30px !important;
+  margin-bottom: 0 !important;
+  text-align: center;
+}
+
+.hero h2 {
+  font-size: 56px !important;
+  font-weight: 800 !important;
+  color: #fff !important;
+  letter-spacing: -1.5px !important;
+  line-height: 1.1 !important;
+  text-shadow: none !important;
+  margin-bottom: 24px !important;
+}
+
+@media (max-width: 768px) {
+  .hero h2 { font-size: 32px !important; letter-spacing: -0.5px !important; }
+}
+
+.hero p {
+  color: rgba(255,255,255,0.55) !important;
+  font-size: 16px !important;
+  max-width: 540px;
+  margin: 0 auto 8px !important;
+  line-height: 1.7 !important;
+  font-weight: 400;
+}
+
+.hero .btn-get-started {
+  background: var(--wl-teal) !important;
+  color: #fff !important;
+  border-radius: 50px !important;
+  padding: 14px 38px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.8px !important;
+  text-transform: uppercase !important;
+  border: 2px solid var(--wl-teal) !important;
+  box-shadow: none !important;
+  transition: all 0.35s var(--wl-ease) !important;
+  margin: 8px 6px !important;
+}
+
+.hero .btn-get-started:hover {
+  background: transparent !important;
+  color: #fff !important;
+  border-color: rgba(255,255,255,0.4) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Carousel nav — minimal */
+.hero .carousel-control-next-icon,
+.hero .carousel-control-prev-icon {
+  background: rgba(255,255,255,0.08) !important;
+  border: 1px solid rgba(255,255,255,0.12) !important;
+  border-radius: 50% !important;
+  width: 48px !important;
+  height: 48px !important;
+  transition: all 0.3s var(--wl-ease);
+  backdrop-filter: blur(10px);
+}
+
+.hero .carousel-control-prev:hover .carousel-control-prev-icon,
+.hero .carousel-control-next:hover .carousel-control-next-icon {
+  background: var(--wl-teal) !important;
+  border-color: var(--wl-teal) !important;
+}
+
+.hero .carousel-indicators li {
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+  background: rgba(255,255,255,0.3) !important;
+  border: none !important;
+  transition: all 0.3s var(--wl-ease);
+}
+
+.hero .carousel-indicators li.active {
+  background: var(--wl-teal) !important;
+  width: 28px !important;
+  border-radius: 20px !important;
+  box-shadow: none !important;
+}
+
+/* ── 5. SECTION TITLES — MINIMAL ─────────────────────── */
+.section-title { padding-bottom: 50px; }
+
+.section-title h2 {
+  font-size: 38px !important;
+  font-weight: 800 !important;
+  color: var(--wl-navy) !important;
+  letter-spacing: -0.8px !important;
+  margin-bottom: 12px !important;
+  padding-bottom: 0 !important;
+}
+
+.section-title h2:after {
+  display: none !important;
+}
+
+.section-title p {
+  font-size: 15px !important;
+  color: var(--wl-text) !important;
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* Accent line via a subtle top-of-title mark */
+.section-title h2::before {
+  content: '';
+  display: block;
+  width: 40px;
+  height: 3px;
+  background: var(--wl-teal);
+  margin: 0 auto 18px;
+  border-radius: 3px;
+}
+
+/* ── 6. FEATURED SERVICES — MINIMAL GLASS ────────────── */
+.featured-services .service-item {
+  border-radius: var(--wl-radius) !important;
+  border: 1px solid rgba(0,0,0,0.05) !important;
+  box-shadow: var(--wl-shadow-sm) !important;
+  padding: 40px 28px !important;
+  transition: all 0.4s var(--wl-ease) !important;
+  background: #fff !important;
+}
+
+.featured-services .service-item:before {
+  display: none !important;
+}
+
+.featured-services .service-item .icon i {
+  color: var(--wl-teal) !important;
+  font-size: 32px !important;
+}
+
+.featured-services .service-item h4 {
+  font-size: 17px !important;
+  font-weight: 700 !important;
+}
+
+.featured-services .service-item h4 a { color: var(--wl-navy) !important; }
+
+.featured-services .service-item p {
+  font-size: 13.5px !important;
+  color: var(--wl-text) !important;
+  line-height: 1.7 !important;
+}
+
+.featured-services .service-item:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: var(--wl-shadow-md) !important;
+  border-color: rgba(0,180,216,0.15) !important;
+}
+
+.featured-services .service-item:hover h4 a,
+.featured-services .service-item:hover .icon i,
+.featured-services .service-item:hover p {
+  color: inherit !important;
+}
+
+.featured-services .service-item:hover .icon i {
+  color: var(--wl-teal) !important;
+}
+
+/* ── 7. CTA SECTION — DARK CINEMATIC ────────────────── */
+.call-to-action {
+  background: var(--wl-navy) !important;
+  padding: 100px 0 !important;
+  position: relative !important;
+  overflow: hidden;
+}
+
+.call-to-action::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -20%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(0,180,216,0.08), transparent 70%);
+  border-radius: 50%;
+  pointer-events: none;
+}
+
+.call-to-action h3 {
+  font-size: 36px !important;
+  font-weight: 800 !important;
+  color: #fff !important;
+  letter-spacing: -0.8px !important;
+}
+
+.call-to-action p {
+  color: rgba(255,255,255,0.55) !important;
+  font-size: 15px !important;
+  line-height: 1.7 !important;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.call-to-action .cta-btn {
+  border: 2px solid rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+  border-radius: 50px !important;
+  padding: 14px 38px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  background: transparent !important;
+  transition: all 0.35s var(--wl-ease) !important;
+}
+
+.call-to-action .cta-btn:hover {
+  background: var(--wl-teal) !important;
+  border-color: var(--wl-teal) !important;
+  transform: translateY(-2px) !important;
+  box-shadow: var(--wl-shadow-glow) !important;
+}
+
+/* ── 8. ABOUT — CLEAN SPLIT ──────────────────────────── */
+.about .col-lg-6.position-relative img,
+.about .col-lg-6 img {
+  border-radius: var(--wl-radius) !important;
+  box-shadow: var(--wl-shadow-md) !important;
+}
+
+.about .content h3 {
+  font-size: 30px !important;
+  font-weight: 800 !important;
+  letter-spacing: -0.5px !important;
+  color: var(--wl-navy) !important;
+}
+
+.about .content ul i {
+  color: var(--wl-teal) !important;
+}
+
+/* ── 9. STATS — BOLD COUNTERS ────────────────────────── */
+.stats { background: var(--wl-section-alt) !important; }
+
+.stats .stats-item {
+  background: #fff !important;
+  border-radius: var(--wl-radius) !important;
+  border: 1px solid rgba(0,0,0,0.04) !important;
+  box-shadow: var(--wl-shadow-sm) !important;
+  padding: 35px !important;
+  transition: all 0.4s var(--wl-ease) !important;
+}
+
+.stats .stats-item:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--wl-shadow-md) !important;
+}
+
+.stats .stats-item i {
+  color: var(--wl-teal) !important;
+  font-size: 36px !important;
+  opacity: 0.9;
+}
+
+.stats .stats-item span {
+  font-size: 44px !important;
+  font-weight: 800 !important;
+  color: var(--wl-navy) !important;
+  letter-spacing: -1px !important;
+}
+
+.stats .stats-item p {
+  color: var(--wl-text) !important;
+  font-size: 13px !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1px !important;
+  margin-top: 4px;
+}
+
+/* ── 10. FEATURES / WHY CHOOSE US ────────────────────── */
+.features .features-image img {
+  border-radius: var(--wl-radius) !important;
+  box-shadow: var(--wl-shadow-lg) !important;
+}
+
+.features h3 {
+  font-size: 30px !important;
+  font-weight: 800 !important;
+  color: var(--wl-navy) !important;
+  letter-spacing: -0.5px !important;
+}
+
+.features h3:after {
+  background: var(--wl-teal) !important;
+  width: 40px !important;
+  height: 3px !important;
+  border-radius: 3px !important;
+}
+
+.features .icon-box {
+  margin-top: 32px !important;
+}
+
+.features .icon-box i {
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 12px !important;
+  background: rgba(0,180,216,0.08) !important;
+  color: var(--wl-teal) !important;
+  font-size: 22px !important;
+  box-shadow: none !important;
+  flex-shrink: 0 !important;
+  transition: all 0.35s var(--wl-ease) !important;
+}
+
+.features .icon-box:hover i {
+  background: var(--wl-teal) !important;
+  color: #fff !important;
+  transform: scale(1.05) !important;
+  box-shadow: 0 4px 20px rgba(0,180,216,0.25) !important;
+}
+
+.features .icon-box h4 {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+}
+
+.features .icon-box h4 a { color: var(--wl-navy) !important; }
+.features .icon-box h4 a:hover { color: var(--wl-teal) !important; }
+
+.features .icon-box p {
+  font-size: 13.5px !important;
+  color: var(--wl-text) !important;
+}
+
+/* ── 11. SERVICES — REFINED GRID ─────────────────────── */
+.services .service-item {
+  border-radius: var(--wl-radius) !important;
+  border: 1px solid rgba(0,0,0,0.05) !important;
+  padding: 36px 24px !important;
+  background: #fff !important;
+  transition: all 0.4s var(--wl-ease) !important;
+  box-shadow: none !important;
+}
+
+.services .service-item:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: var(--wl-shadow-md) !important;
+  border-color: rgba(0,180,216,0.12) !important;
+}
+
+.services .service-item .icon {
+  width: 64px !important;
+  height: 64px !important;
+  border-radius: 14px !important;
+  background: rgba(0,180,216,0.08) !important;
+  box-shadow: none !important;
+  font-size: 26px !important;
+  transition: all 0.35s var(--wl-ease) !important;
+}
+
+.services .service-item:hover .icon {
+  background: var(--wl-teal) !important;
+  color: #fff !important;
+  box-shadow: 0 6px 25px rgba(0,180,216,0.25) !important;
+}
+
+.services .service-item h3 {
+  font-size: 18px !important;
+  font-weight: 700 !important;
+}
+
+.services .service-item h3:after {
+  background: var(--wl-teal) !important;
+  width: 30px !important;
+  opacity: 0.4;
+}
+
+.services .service-item:hover h3 { color: var(--wl-teal) !important; }
+
+.services .service-item p {
+  font-size: 13.5px !important;
+  color: var(--wl-text) !important;
+  line-height: 1.7 !important;
+}
+
+/* ── 12. APPOINTMENT FORM ────────────────────────────── */
+.appointment { background: var(--wl-section-alt) !important; }
+
+.appointment .section-title h2 { text-transform: none !important; }
+
+.appointment .php-email-form input,
+.appointment .php-email-form textarea,
+.appointment .php-email-form select {
+  border-radius: var(--wl-radius-sm) !important;
+  border: 1px solid rgba(0,0,0,0.08) !important;
+  padding: 13px 16px !important;
+  font-size: 14px !important;
+  transition: all 0.3s var(--wl-ease) !important;
+  background: #fff !important;
+}
+
+.appointment .php-email-form input:focus,
+.appointment .php-email-form textarea:focus,
+.appointment .php-email-form select:focus {
+  border-color: var(--wl-teal) !important;
+  box-shadow: 0 0 0 3px rgba(0,180,216,0.1) !important;
+}
+
+.appointment .php-email-form input,
+.appointment .php-email-form select { height: 50px !important; }
+
+.appointment .php-email-form button[type=submit] {
+  background: var(--wl-navy) !important;
+  border-radius: 50px !important;
+  padding: 14px 44px !important;
+  font-size: 12px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  border: 2px solid var(--wl-navy) !important;
+  box-shadow: none !important;
+  transition: all 0.35s var(--wl-ease) !important;
+}
+
+.appointment .php-email-form button[type=submit]:hover {
+  background: var(--wl-teal) !important;
+  border-color: var(--wl-teal) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ── 13. DEPARTMENTS TABS ────────────────────────────── */
+.tabs .nav-link {
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  color: var(--wl-text-dark) !important;
+  padding: 14px 18px 14px 0 !important;
+  border-right: 2px solid rgba(0,0,0,0.05) !important;
+  transition: all 0.3s var(--wl-ease) !important;
+}
+
+.tabs .nav-link:hover,
+.tabs .nav-link.active {
+  color: var(--wl-teal) !important;
+  border-color: var(--wl-teal) !important;
+}
+
+.tabs .tab-pane img {
+  border-radius: var(--wl-radius) !important;
+  box-shadow: var(--wl-shadow-sm) !important;
+}
+
+.tabs .details h3 {
+  font-size: 24px !important;
+  font-weight: 800 !important;
+  color: var(--wl-navy) !important;
+  letter-spacing: -0.3px !important;
+}
+
+.tabs .details p {
+  color: var(--wl-text) !important;
+  line-height: 1.8 !important;
+}
+
+@media (max-width: 992px) {
+  .tabs .nav-link.active {
+    background: var(--wl-teal) !important;
+    color: #fff !important;
+    border-radius: var(--wl-radius-sm) !important;
+  }
+}
+
+/* ── 14. TESTIMONIALS — CLEAN CARDS ──────────────────── */
+.testimonials { background: var(--wl-section-alt) !important; }
+
+.testimonials .testimonial-item p {
+  background: #fff !important;
+  border: 1px solid rgba(0,0,0,0.04) !important;
+  border-radius: var(--wl-radius) !important;
+  box-shadow: var(--wl-shadow-sm) !important;
+  padding: 28px 28px 60px !important;
+  font-style: normal !important;
+  font-size: 14px !important;
+  color: var(--wl-text-dark) !important;
+  line-height: 1.8 !important;
+}
+
+.testimonials .testimonial-item .testimonial-img {
+  border: 3px solid #fff !important;
+  box-shadow: var(--wl-shadow-sm) !important;
+  width: 72px !important;
+}
+
+.testimonials .testimonial-item h3 {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: var(--wl-navy) !important;
+}
+
+.testimonials .testimonial-item h4 {
+  font-size: 12px !important;
+  color: var(--wl-teal) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.8px !important;
+}
+
+.testimonials .testimonial-item .quote-icon-left,
+.testimonials .testimonial-item .quote-icon-right {
+  color: rgba(0,180,216,0.2) !important;
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet {
+  background: rgba(0,0,0,0.12) !important;
+  border: none !important;
+  width: 8px !important;
+  height: 8px !important;
+  border-radius: 50% !important;
+}
+
+.testimonials .swiper-pagination .swiper-pagination-bullet-active {
+  background: var(--wl-teal) !important;
+  width: 24px !important;
+  border-radius: 20px !important;
+}
+
+/* ── 15. DOCTORS — PREMIUM CARDS ─────────────────────── */
+.doctors { background: #fff !important; }
+
+.doctors .team-member {
+  border-radius: var(--wl-radius) !important;
+  border: 1px solid rgba(0,0,0,0.04) !important;
+  box-shadow: var(--wl-shadow-sm) !important;
+  overflow: hidden;
+  transition: all 0.45s var(--wl-ease) !important;
+}
+
+.doctors .team-member:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: var(--wl-shadow-lg) !important;
+}
+
+.doctors .team-member .member-img img {
+  transition: transform 0.7s var(--wl-ease);
+}
+
+.doctors .team-member:hover .member-img img {
+  transform: scale(1.06) !important;
+}
+
+.doctors .team-member .social a {
+  background: rgba(255,255,255,0.92) !important;
+  color: var(--wl-navy) !important;
+  border-radius: 50% !important;
+  width: 36px !important;
+  height: 36px !important;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08) !important;
+  transition: all 0.3s var(--wl-ease) !important;
+}
+
+.doctors .team-member .social a:hover {
+  background: var(--wl-teal) !important;
+  color: #fff !important;
+  transform: translateY(-2px) !important;
+}
+
+.doctors .team-member .member-info {
+  padding: 22px 18px !important;
+}
+
+.doctors .team-member .member-info h4 {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: var(--wl-navy) !important;
+}
+
+.doctors .team-member .member-info span {
+  font-size: 12px !important;
+  color: var(--wl-teal) !important;
+  font-weight: 600 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.6px !important;
+}
+
+/* ── 16. GALLERY ─────────────────────────────────────── */
+.gallery .swiper-slide img {
+  border-radius: var(--wl-radius-sm) !important;
+}
+
+@media (min-width: 992px) {
+  .gallery .swiper-slide-active {
+    border: 3px solid var(--wl-teal) !important;
+    border-radius: var(--wl-radius-sm) !important;
+    padding: 3px !important;
+  }
+}
+
+.gallery .swiper-pagination .swiper-pagination-bullet {
+  background: rgba(0,0,0,0.1) !important;
+  border: none !important;
+}
+
+.gallery .swiper-pagination .swiper-pagination-bullet-active {
+  background: var(--wl-teal) !important;
+  width: 24px !important;
+  border-radius: 20px !important;
+}
+
+/* ── 17. PRICING / HEALTH PACKAGES ───────────────────── */
+.pricing .pricing-item {
+  border-radius: var(--wl-radius) !important;
+  border: 1px solid rgba(0,0,0,0.05) !important;
+  box-shadow: var(--wl-shadow-sm) !important;
+  padding: 0 !important;
+  overflow: hidden;
+  transition: all 0.4s var(--wl-ease) !important;
+}
+
+.pricing .pricing-item:hover {
+  transform: translateY(-6px) !important;
+  box-shadow: var(--wl-shadow-md) !important;
+}
+
+.pricing .pricing-item h3 {
+  background: var(--wl-section-alt) !important;
+  color: var(--wl-navy) !important;
+  border-bottom: 1px solid rgba(0,0,0,0.04) !important;
+  font-weight: 700 !important;
+  padding: 20px 15px !important;
+}
+
+.pricing .pricing-item h4 {
+  color: var(--wl-teal) !important;
+  font-weight: 800 !important;
+  padding-top: 20px !important;
+}
+
+.pricing .pricing-item ul {
+  text-align: left !important;
+  padding: 15px 28px !important;
+}
+
+.pricing .pricing-item ul li::before {
+  color: var(--wl-teal) !important;
+}
+
+.pricing .btn-wrap {
+  background: transparent !important;
+  padding: 0 20px 24px !important;
+}
+
+.pricing .btn-buy {
+  background: var(--wl-navy) !important;
+  border-radius: 50px !important;
+  font-weight: 700 !important;
+  letter-spacing: 0.5px !important;
+  box-shadow: none !important;
+  transition: all 0.35s var(--wl-ease) !important;
+}
+
+.pricing .btn-buy:hover {
+  background: var(--wl-teal) !important;
+  transform: translateY(-2px) !important;
+}
+
+.pricing .featured {
+  border: 2px solid var(--wl-teal) !important;
+}
+
+.pricing .featured h3 {
+  background: var(--wl-teal) !important;
+  color: #fff !important;
+}
+
+.pricing .advanced {
+  background: var(--wl-gold) !important;
+  color: var(--wl-navy) !important;
+  font-weight: 700 !important;
+}
+
+/* ── 18. FAQ ─────────────────────────────────────────── */
+.faq { background: var(--wl-section-alt) !important; }
+
+.faq .faq-container .faq-item {
+  border-radius: var(--wl-radius-sm) !important;
+  border: 1px solid rgba(0,0,0,0.04) !important;
+  box-shadow: none !important;
+  padding: 22px 24px !important;
+  transition: all 0.3s var(--wl-ease) !important;
+  background: #fff !important;
+}
+
+.faq .faq-container .faq-item:hover {
+  box-shadow: var(--wl-shadow-sm) !important;
+}
+
+.faq .faq-container .faq-item h3 {
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  color: var(--wl-navy) !important;
+}
+
+.faq .faq-container .faq-active {
+  border-color: var(--wl-teal) !important;
+  box-shadow: 0 4px 20px rgba(0,180,216,0.08) !important;
+}
+
+.faq .faq-container .faq-active h3 { color: var(--wl-teal) !important; }
+
+.faq .faq-container .faq-active .faq-toggle { color: var(--wl-teal) !important; }
+
+.faq .faq-container .faq-item .faq-content p {
+  color: var(--wl-text) !important;
+  line-height: 1.8 !important;
+  font-size: 14px !important;
+}
+
+/* ── 19. CONTACT ─────────────────────────────────────── */
+.contact .info-item {
+  border-radius: var(--wl-radius) !important;
+  border: 1px solid rgba(0,0,0,0.04) !important;
+  box-shadow: var(--wl-shadow-sm) !important;
+  padding: 28px 20px !important;
+  transition: all 0.4s var(--wl-ease) !important;
+}
+
+.contact .info-item:hover {
+  transform: translateY(-4px) !important;
+  box-shadow: var(--wl-shadow-md) !important;
+}
+
+.contact .info-item i {
+  width: 50px !important;
+  height: 50px !important;
+  border-radius: 12px !important;
+  background: rgba(0,180,216,0.08) !important;
+  border: none !important;
+  color: var(--wl-teal) !important;
+  font-size: 20px !important;
+  transition: all 0.35s var(--wl-ease) !important;
+}
+
+.contact .info-item:hover i {
+  background: var(--wl-teal) !important;
+  color: #fff !important;
+}
+
+.contact .info-item h3 {
+  font-size: 16px !important;
+  font-weight: 700 !important;
+  color: var(--wl-navy) !important;
+}
+
+.contact .info-item p {
+  font-size: 13.5px !important;
+  color: var(--wl-text) !important;
+}
+
+.contact .php-email-form {
+  border-radius: var(--wl-radius) !important;
+  border: 1px solid rgba(0,0,0,0.04) !important;
+  box-shadow: var(--wl-shadow-sm) !important;
+  padding: 36px !important;
+}
+
+.contact .php-email-form input[type=text],
+.contact .php-email-form input[type=email],
+.contact .php-email-form textarea {
+  border-radius: var(--wl-radius-sm) !important;
+  border: 1px solid rgba(0,0,0,0.08) !important;
+  font-size: 14px !important;
+  transition: all 0.3s var(--wl-ease) !important;
+}
+
+.contact .php-email-form input:focus,
+.contact .php-email-form textarea:focus {
+  border-color: var(--wl-teal) !important;
+  box-shadow: 0 0 0 3px rgba(0,180,216,0.1) !important;
+}
+
+.contact .php-email-form button[type=submit] {
+  background: var(--wl-navy) !important;
+  border-radius: 50px !important;
+  padding: 12px 36px !important;
+  font-weight: 700 !important;
+  letter-spacing: 1px !important;
+  text-transform: uppercase !important;
+  font-size: 12px !important;
+  transition: all 0.35s var(--wl-ease) !important;
+  box-shadow: none !important;
+}
+
+.contact .php-email-form button[type=submit]:hover {
+  background: var(--wl-teal) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* ── 20. FOOTER — DARK PREMIUM ───────────────────────── */
+.footer {
+  background: var(--wl-navy) !important;
+  color: rgba(255,255,255,0.55) !important;
+}
+
+.footer .footer-top { padding-top: 70px !important; }
+
+.footer .footer-about .logo span {
+  color: #fff !important;
+  font-size: 22px !important;
+  font-weight: 700 !important;
+}
+
+.footer .footer-about p {
+  color: rgba(255,255,255,0.45) !important;
+}
+
+.footer .footer-contact p {
+  color: rgba(255,255,255,0.5) !important;
+}
+
+.footer h4 {
+  color: #fff !important;
+  font-size: 14px !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 1.2px !important;
+}
+
+.footer .footer-links ul a {
+  color: rgba(255,255,255,0.4) !important;
+  transition: all 0.3s var(--wl-ease) !important;
+}
+
+.footer .footer-links ul a:hover {
+  color: var(--wl-teal) !important;
+  padding-left: 6px !important;
+}
+
+.footer .social-links a {
+  border: 1px solid rgba(255,255,255,0.1) !important;
+  color: rgba(255,255,255,0.5) !important;
+  transition: all 0.35s var(--wl-ease) !important;
+  width: 38px !important;
+  height: 38px !important;
+}
+
+.footer .social-links a:hover {
+  background: var(--wl-teal) !important;
+  border-color: var(--wl-teal) !important;
+  color: #fff !important;
+  transform: translateY(-3px) !important;
+}
+
+.footer .copyright {
+  border-top: 1px solid rgba(255,255,255,0.06) !important;
+  color: rgba(255,255,255,0.3) !important;
+}
+
+/* ── 21. PRELOADER & SCROLL-TOP ──────────────────────── */
+#preloader {
+  background: var(--wl-navy) !important;
+}
+
+#preloader:before {
+  border: 2px solid rgba(0,180,216,0.15) !important;
+  border-top: 2px solid var(--wl-teal) !important;
+}
+
+.scroll-top {
+  background: var(--wl-navy) !important;
+  border-radius: 50% !important;
+  width: 42px !important;
+  height: 42px !important;
+  box-shadow: var(--wl-shadow-md) !important;
+  transition: all 0.35s var(--wl-ease) !important;
+}
+
+.scroll-top:hover {
+  background: var(--wl-teal) !important;
+  transform: translateY(-4px) !important;
+}
+
+/* ── 22. LIGHT-BACKGROUND OVERRIDE ───────────────────── */
+.light-background {
+  background-color: var(--wl-section-alt) !important;
+}
+
+/* ── 23. MAP ─────────────────────────────────────────── */
+.contact iframe,
+.mb-5 iframe {
+  border-radius: var(--wl-radius) !important;
+  filter: grayscale(0.3) contrast(1.05);
+}
+
+/* ── 24. RESPONSIVE POLISH ───────────────────────────── */
+@media (max-width: 768px) {
+  section, .section { padding: 60px 0; }
+  .section-title h2 { font-size: 28px !important; }
+  .hero .carousel { min-height: 100vh !important; }
+}
+
+/* ── 25. ANIMATE FADE-IN REFINEMENT ──────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.tabs .tab-pane.active { animation: fadeIn 0.45s var(--wl-ease); }
+
+/* ── 26. HERO SUBTITLE & GHOST BUTTON ────────────────── */
+.hero .hero-subtitle {
+  color: rgba(255,255,255,0.5) !important;
+  text-transform: uppercase !important;
+  letter-spacing: 3.5px !important;
+  font-size: 11px !important;
+  font-weight: 700 !important;
+  margin-bottom: 16px !important;
+}
+
+.hero .btn-ghost {
+  background: transparent !important;
+  border: 2px solid rgba(255,255,255,0.2) !important;
+  color: #fff !important;
+}
+
+.hero .btn-ghost:hover {
+  border-color: rgba(255,255,255,0.5) !important;
+  background: rgba(255,255,255,0.06) !important;
+}
+
+/* ── 27. STATS INLINE SUFFIX SPANS ───────────────────── */
+.stats .stats-item span[style] {
+  font-size: 22px !important;
+  font-weight: 700 !important;
+  color: var(--wl-teal) !important;
+}
+
+/* ── 28. DARK-BACKGROUND SECTION TITLES ──────────────── */
+.dark-background .section-title h2,
+.call-to-action h3 {
+  color: #fff !important;
+}
+
+.dark-background .section-title h2::before,
+.call-to-action .section-title h2::before {
+  background: var(--wl-teal) !important;
+}
+
+.dark-background .section-title p {
+  color: rgba(255,255,255,0.5) !important;
+}
+
+/* ── 29. DOCTORS SECTION TITLE OVERRIDE ──────────────── */
+.doctors .section-title h2::before { background: var(--wl-teal); }
